@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(IObjectCreator))]
 public class SizeChanger : MonoBehaviour
 {
     [SerializeField] private float _newSize = 0.5f;
 
     public void OnEnable()
     {
-        DivisibleTrait dispatcher = GetComponent<DivisibleTrait>();
+        IObjectCreator dispatcher = GetComponent<IObjectCreator>();
         dispatcher.ChildCreated += ChangeSize;
     }
 
     public void OnDisable()
     {
-        DivisibleTrait dispatcher = GetComponent<DivisibleTrait>();
+        IObjectCreator dispatcher = GetComponent<IObjectCreator>();
         dispatcher.ChildCreated -= ChangeSize;
     }
 

@@ -4,13 +4,21 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DivisibleTrait : MonoBehaviour, IClickHandler
+public class DivisibleTrait : MonoBehaviour, IClickHandler, IObjectCreator
 {
-    [SerializeField] private GameObject _prefab;
+    [SerializeField] private DivisibleTrait _prefab;
     [SerializeField] private float _spawnRadius = 5;
     [SerializeField] private int _minChildrenAmount = 2;
     [SerializeField] private int _maxChildrenAmount = 6;
     [SerializeField] public int _divisionChanceInPercent = 100;
+
+    public int DivisionChanceInPercent
+    {
+        set
+        {
+            _divisionChanceInPercent = Math.Max(value, 0);
+        }
+    }
 
     public event Action<GameObject> ChildCreated;
 
@@ -24,15 +32,10 @@ public class DivisibleTrait : MonoBehaviour, IClickHandler
 
             for (int i = 0; i < childrenAmount; i++)
             {
-                GameObject newObject = Instantiate(
-                    _prefab, 
-                    transform.position + UnityEngine.Random.insideUnitSphere * _spawnRadius, 
-                    Quaternion.identity
-                ) as GameObject;
-                ChildCreated?.Invoke(newObject);
+                DivisibleTrait newObject = ObjectSpawner.Spawn(_prefab, transform.position, _spawnRadius);
+                ChildCreated?.Invoke(newObject.gameObject);
 
-                DivisibleTrait script = newObject.GetComponent<DivisibleTrait>();
-                script._divisionChanceInPercent = this._divisionChanceInPercent / 2;
+                newObject.DivisionChanceInPercent = this._divisionChanceInPercent / 2;
             }
         }
     }

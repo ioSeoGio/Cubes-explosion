@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(IClickHandler))]
 public class ClickManager : MonoBehaviour
 {
     private List<IClickHandler> _handlers;

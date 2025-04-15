@@ -22,7 +22,6 @@ public class RandomColorChanger : MonoBehaviour
     {
         if (gameObject.TryGetComponent<Renderer>(out Renderer renderer))
         {
-            Debug.Log("[3] Changing object color");
             renderer.material.color = RandomHelper.GetRandomColor();
         }
     }

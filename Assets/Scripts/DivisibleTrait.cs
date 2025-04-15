@@ -10,9 +10,10 @@ public class DivisibleTrait : MonoBehaviour, IClickHandler, IObjectCreator
     [SerializeField] private float _spawnRadius = 5;
     [SerializeField] private int _minChildrenAmount = 2;
     [SerializeField] private int _maxChildrenAmount = 6;
-    [SerializeField] public int _divisionChanceInPercent = 100;
+    [SerializeField] public float _divisionChanceInPercent = 100;
+    [SerializeField] public float _divisionChangeModifier = 0.5f;
 
-    public int DivisionChanceInPercent
+    public float DivisionChanceInPercent
     {
         set
         {
@@ -24,8 +25,6 @@ public class DivisibleTrait : MonoBehaviour, IClickHandler, IObjectCreator
 
     public void HandleClick()
     {
-        Debug.Log("[2] Chance: " + _divisionChanceInPercent);
-
         if (RandomHelper.IsRandomEventHappened(_divisionChanceInPercent))
         {
             int childrenAmount = RandomHelper.GetRandomNumber(_minChildrenAmount, _maxChildrenAmount);
@@ -35,7 +34,7 @@ public class DivisibleTrait : MonoBehaviour, IClickHandler, IObjectCreator
                 DivisibleTrait newObject = ObjectSpawner.Spawn(_prefab, transform.position, _spawnRadius);
                 ChildCreated?.Invoke(newObject.gameObject);
 
-                newObject.DivisionChanceInPercent = this._divisionChanceInPercent / 2;
+                newObject.DivisionChanceInPercent = _divisionChanceInPercent * _divisionChangeModifier;
             }
         }
     }

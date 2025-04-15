@@ -21,7 +21,6 @@ public class SizeChanger : MonoBehaviour
 
     private void ChangeSize(GameObject gameObject)
     {
-        Debug.Log("[4] Changing size");
         gameObject.transform.localScale = new Vector3(
             transform.localScale.x * _newSize, 
             transform.localScale.y * _newSize, 

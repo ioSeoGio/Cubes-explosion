@@ -9,8 +9,6 @@ public class ExplodableTrait : MonoBehaviour, IClickHandler
 
     public void HandleClick()
     {
-        Debug.Log("[5] Exploding object");
-
         Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, _radius);
 
         foreach(Collider collider in overlappedColliders)

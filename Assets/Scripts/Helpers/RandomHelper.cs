@@ -11,7 +11,7 @@ public static class RandomHelper
     private const int MinRandom = 0;
     private const int MaxRandom = 100;
 
-    public static bool IsRandomEventHappened(int chance)
+    public static bool IsRandomEventHappened(float chance)
     {
         return GetRandomNumber(MinRandom, MaxRandom + 1) <= chance;
     }

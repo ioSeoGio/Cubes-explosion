@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(IClickHandler))]
-public class ClickManager : MonoBehaviour
+public class ClickEventDispatcher : MonoBehaviour
 {
     private List<IClickHandler> _handlers;
 

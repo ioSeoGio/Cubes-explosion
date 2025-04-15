@@ -415,6 +415,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1156602837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8109230364434480692, guid: 65fcaaf4b19f0c349b4602b2dc360708, type: 3}
+  m_PrefabInstance: {fileID: 1303573304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e15a72aad1ccac4f88bd7348766251a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1234763591
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Divisible Sphere
       objectReference: {fileID: 0}
+    - target: {fileID: 8109230364434480692, guid: 65fcaaf4b19f0c349b4602b2dc360708, type: 3}
+      propertyPath: _prefab
+      value: 
+      objectReference: {fileID: 1156602837}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -659,6 +674,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e193df833f191d643a5ee3eb090e260c, type: 3}
+--- !u!114 &1986902368 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5464664018155153259, guid: e4744c4f064c5c14290832646aa7ab98, type: 3}
+  m_PrefabInstance: {fileID: 2100017468}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e15a72aad1ccac4f88bd7348766251a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2063703165
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explodable & Divisible Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 5464664018155153259, guid: e4744c4f064c5c14290832646aa7ab98, type: 3}
+      propertyPath: _prefab
+      value: 
+      objectReference: {fileID: 1986902368}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

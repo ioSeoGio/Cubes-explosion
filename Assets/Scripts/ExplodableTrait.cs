@@ -10,7 +10,6 @@ public class ExplodableTrait : MonoBehaviour, IClickHandler
 
     public void HandleClick()
     {
-        Debug.Log("Explosion");
         IReadOnlyList<Collider> children = GetComponent<IChildrenStorage>().GetChildren();
 
         foreach (Collider collider in children)

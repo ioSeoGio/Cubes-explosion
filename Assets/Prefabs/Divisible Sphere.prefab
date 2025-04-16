@@ -15,8 +15,6 @@ GameObject:
   - component: {fileID: 1446514994056366924}
   - component: {fileID: 7745408276430123823}
   - component: {fileID: 8109230364434480692}
-  - component: {fileID: 5416726050957882469}
-  - component: {fileID: 5653704015319262780}
   m_Layer: 0
   m_Name: Divisible Sphere
   m_TagString: Untagged
@@ -161,33 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e15a72aad1ccac4f88bd7348766251a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 7527632648322236794}
+  _prefab: {fileID: 8109230364434480692}
   _spawnRadius: 5
   _minChildrenAmount: 2
   _maxChildrenAmount: 6
   _divisionChanceInPercent: 100
---- !u!114 &5416726050957882469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7527632648322236794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6940653c6c0852b42b560f3bde0c1c43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5653704015319262780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7527632648322236794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d377431d9d5b984ab2925c4b74bdc80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _newSize: 0.5
+  _divisionChangeModifier: 0.5

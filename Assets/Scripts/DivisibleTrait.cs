@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DivisibleTrait : MonoBehaviour, IClickHandler, IObjectCreator
+[RequireComponent(typeof(Collider))]
+public class DivisibleTrait : MonoBehaviour, IClickHandler, IChildrenStorage
 {
     [SerializeField] private DivisibleTrait _prefab;
     [SerializeField] private float _spawnRadius = 5;
@@ -12,6 +13,8 @@ public class DivisibleTrait : MonoBehaviour, IClickHandler, IObjectCreator
     [SerializeField] private int _maxChildrenAmount = 6;
     [SerializeField] public float _divisionChanceInPercent = 100;
     [SerializeField] public float _divisionChangeModifier = 0.5f;
+
+    private List<Collider> _children = new List<Collider>();
 
     public float DivisionChanceInPercent
     {
@@ -21,21 +24,24 @@ public class DivisibleTrait : MonoBehaviour, IClickHandler, IObjectCreator
         }
     }
 
-    public event Action<GameObject> ChildCreated;
-
     public void HandleClick()
     {
         if (RandomHelper.IsRandomEventHappened(_divisionChanceInPercent))
         {
             int childrenAmount = RandomHelper.GetRandomNumber(_minChildrenAmount, _maxChildrenAmount);
+            ObjectSpawner objectSpawner = new ObjectSpawner();
 
             for (int i = 0; i < childrenAmount; i++)
             {
-                DivisibleTrait newObject = ObjectSpawner.Spawn(_prefab, transform.position, _spawnRadius);
-                ChildCreated?.Invoke(newObject.gameObject);
-
+                DivisibleTrait newObject = objectSpawner.Spawn(_prefab, transform.position, _spawnRadius);
+                _children.Add(newObject.GetComponent<Collider>());
                 newObject.DivisionChanceInPercent = _divisionChanceInPercent * _divisionChangeModifier;
             }
         }
+    }
+
+    public IReadOnlyList<Collider> GetChildren()
+    {
+        return _children.AsReadOnly();
     }
 }

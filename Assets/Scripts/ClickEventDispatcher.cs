@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(IClickHandler))]
 public class ClickEventDispatcher : MonoBehaviour
 {
-    private List<IClickHandler> _handlers;
+    public List<IClickHandler> _handlers;
 
     private void Awake()
     {

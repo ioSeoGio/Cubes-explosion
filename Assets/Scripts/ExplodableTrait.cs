@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(IChildrenStorage))]
 public class ExplodableTrait : MonoBehaviour, IClickHandler
 {
     [SerializeField] private float _radius = 50;
@@ -9,13 +10,12 @@ public class ExplodableTrait : MonoBehaviour, IClickHandler
 
     public void HandleClick()
     {
-        Collider[] overlappedColliders = Physics.OverlapSphere(transform.position, _radius);
+        Debug.Log("Explosion");
+        IReadOnlyList<Collider> children = GetComponent<IChildrenStorage>().GetChildren();
 
-        foreach(Collider collider in overlappedColliders)
+        foreach (Collider collider in children)
         {
-            Rigidbody rigidbody = collider.attachedRigidbody;
-
-            if (rigidbody != null)
+            if (collider.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
             {
                 rigidbody.AddExplosionForce(_force, transform.position, _radius);
             }

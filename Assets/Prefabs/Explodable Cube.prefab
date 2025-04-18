@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 360702881526075774}
   - component: {fileID: 951025934063387518}
   - component: {fileID: 3966920074217605362}
-  - component: {fileID: 8367475264128074718}
-  - component: {fileID: 5464664018155153259}
-  - component: {fileID: 3598660296920780635}
+  - component: {fileID: 7827862891686156489}
+  - component: {fileID: 4121760076818376377}
   m_Layer: 0
   m_Name: Explodable Cube
   m_TagString: Untagged
@@ -136,7 +135,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8367475264128074718
+--- !u!114 &7827862891686156489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,28 +144,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411249043565235072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca204ae9e0793de4aae3e95a72381eef, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b8fb08f062320f4db7bf89f4283f115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5464664018155153259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411249043565235072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e15a72aad1ccac4f88bd7348766251a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 5464664018155153259}
   _spawnRadius: 5
   _minChildrenAmount: 2
   _maxChildrenAmount: 6
   _divisionChanceInPercent: 100
   _divisionChangeModifier: 0.5
---- !u!114 &3598660296920780635
+--- !u!114 &4121760076818376377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411249043565235072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1699a07417f9540ae851f956088931, type: 3}
+  m_Script: {fileID: 11500000, guid: f43b26362a5c0ee438fef3740e2222f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 50

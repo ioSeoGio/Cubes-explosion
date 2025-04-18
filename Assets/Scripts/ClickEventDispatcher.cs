@@ -1,22 +1,33 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(IClickHandler))]
+[RequireComponent(typeof(CameraRaycastSelector))]
 public class ClickEventDispatcher : MonoBehaviour
 {
-    public List<IClickHandler> _handlers;
-
-    private void Awake()
+    private void Update()
     {
-        _handlers = GetComponents<IClickHandler>().ToList();
-    }
-
-    private void OnMouseDown()
-    {
-        foreach (var handler in _handlers)
+        if (Input.GetMouseButtonDown(0))
         {
-            handler.HandleClick();
+            CameraRaycastSelector selector = GetComponent<CameraRaycastSelector>();
+            GameObject gameObject = selector.GetObject();
+
+            if (gameObject != null)
+            {
+                IReadOnlyList<Collider> children = new List<Collider>().AsReadOnly();
+                if (gameObject.TryGetComponent<DivisibleTrait>(out DivisibleTrait divisibleTrait))
+                {
+                    DivisibleHandler divisibleHandler = gameObject.AddComponent<DivisibleHandler>();
+                    children = divisibleHandler.Divide(divisibleTrait);
+                }
+
+                if (gameObject.TryGetComponent<ExplodableTrait>(out ExplodableTrait explodableTrait))
+                {
+                    ExplodableHandler explodableHandler = gameObject.AddComponent<ExplodableHandler>();
+                    explodableHandler.Explode(explodableTrait, children);
+                }
+            }
         }
     }
 }

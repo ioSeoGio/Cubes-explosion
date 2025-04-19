@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraRaycastSelector : MonoBehaviour
 {
-    public Camera mainCamera;
-    public LayerMask selectableLayer;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private LayerMask selectableLayer;
 
     public GameObject GetObject()
     {

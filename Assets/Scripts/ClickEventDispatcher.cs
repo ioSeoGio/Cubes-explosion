@@ -6,26 +6,33 @@ using UnityEngine;
 [RequireComponent(typeof(CameraRaycastSelector))]
 public class ClickEventDispatcher : MonoBehaviour
 {
+    private CameraRaycastSelector _cameraRaycastSelector;
+    private DivisibleHandler _divisibleHandler = new();
+    private ExplodableHandler _explodableHandler = new();
+
+    private void Start()
+    {
+        _cameraRaycastSelector = GetComponent<CameraRaycastSelector>();
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            CameraRaycastSelector selector = GetComponent<CameraRaycastSelector>();
-            GameObject gameObject = selector.GetObject();
+            GameObject gameObject = _cameraRaycastSelector.GetObject();
 
             if (gameObject != null)
             {
                 IReadOnlyList<Collider> children = new List<Collider>().AsReadOnly();
+
                 if (gameObject.TryGetComponent<DivisibleTrait>(out DivisibleTrait divisibleTrait))
                 {
-                    DivisibleHandler divisibleHandler = gameObject.AddComponent<DivisibleHandler>();
-                    children = divisibleHandler.Divide(divisibleTrait);
+                    children = _divisibleHandler.Divide(divisibleTrait);
                 }
 
                 if (gameObject.TryGetComponent<ExplodableTrait>(out ExplodableTrait explodableTrait))
                 {
-                    ExplodableHandler explodableHandler = gameObject.AddComponent<ExplodableHandler>();
-                    explodableHandler.Explode(explodableTrait, children);
+                    _explodableHandler.Explode(explodableTrait, children);
                 }
             }
         }

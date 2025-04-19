@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplodableHandler : MonoBehaviour
+public class ExplodableHandler
 {
     public void Explode(ExplodableTrait explodingObject, IReadOnlyList<Collider> collidersToImpact)
     {
@@ -14,6 +14,6 @@ public class ExplodableHandler : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+        GameObject.Destroy(explodingObject.gameObject);
     }
 }
